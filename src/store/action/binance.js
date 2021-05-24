@@ -1,13 +1,5 @@
 import { ActionTypes } from '../constants';
-import { binanceClient, handleBinanceResponseError, handleBinanceResponseSuccess } from '../api/binanceClient';
-
-export const binanceAPI = {
-  getExchangeInfo() {
-    return binanceClient.get('/api/v3/exchangeInfo')
-      .then(handleBinanceResponseSuccess)
-      .catch(handleBinanceResponseError)
-  }
-};
+import { binanceAPI } from '../api/binance';
 
 export const setExchangeInfo = () => async (dispatch) => {
   const response = await binanceAPI.getExchangeInfo();

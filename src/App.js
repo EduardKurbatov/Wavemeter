@@ -7,7 +7,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setExchangeInfo()(dispatch);
+    dispatch(setExchangeInfo())
   }, [dispatch]);
 
   return (
