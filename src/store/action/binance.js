@@ -1,5 +1,5 @@
 import { ActionTypes } from '../constants';
-import { binanceClient, handleBinanceResponseError, handleBinanceResponseSuccess } from '../api/binance';
+import { binanceClient, handleBinanceResponseError, handleBinanceResponseSuccess } from '../api/binanceClient';
 
 export const binanceAPI = {
   getExchangeInfo() {
