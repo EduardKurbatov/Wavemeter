@@ -6,6 +6,20 @@ export const binanceClient = axios.create({
   baseURL: BINANCE_URL
 });
 
+export const handleBinanceResponseSuccess = (response) => {
+  return {
+    data: response.data,
+    isError: false
+  }
+};
+
+export const handleBinanceResponseError = (error) => {
+  return {
+      data: error.response?.data,
+      isError: true
+  }
+};
+
 export const getExchangeInfo = (dispatch) => {
   return binanceClient.get(BINANCE_URL)
     .then(handleBinanceResponseSuccess)
@@ -20,18 +34,3 @@ export const getExchangeInfo = (dispatch) => {
       })
     .catch(handleBinanceResponseError)
 };
-
-export const handleBinanceResponseError = (error) => {
-  return {
-      data: error.response?.data,
-      isError: true
-  }
-};
-
-export const handleBinanceResponseSuccess = (response) => {
-  return {
-    data: response.data,
-    isError: false
-  }
-};
-
