@@ -14,7 +14,7 @@ export const setExchangeInfo = () => async (dispatch) => {
 
   dispatch({
     type: ActionTypes.GET_EXCHANGE_INFO,
-    payload: {symbols: response.data.symbols.map((item) => {
+    payload: {exchangeInfoData: response.data.symbols.map((item) => {
       return {
         baseAsset: item.baseAsset,
         quoteAsset: item.quoteAsset,
