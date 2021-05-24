@@ -1,13 +1,13 @@
 import './App.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getExchangeInfo } from './store/api/binance';
+import { setExchangeInfo } from './store/action/binance';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getExchangeInfo(dispatch);
+    setExchangeInfo()(dispatch);
   }, [dispatch]);
 
   return (
