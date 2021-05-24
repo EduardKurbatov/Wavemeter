@@ -1,9 +1,9 @@
-import { ActionTypes } from "../conctants";
+import { ActionTypes } from "../constants";
 
 export const exchangeDataInfoReducer = (state = {}, {type, payload}) => {
   switch (type) {
     case ActionTypes.GET_EXCHANGE_INFO:
-      return {...state, 'exchangeInfoData': payload}
+      return {...state, ...payload}
     default:
       return state
   }

@@ -1,8 +1,8 @@
-import { ActionTypes } from '../conctants';
+import { ActionTypes } from '../constants';
 
-export const setExchangeInfo = (data) => {
+export const setExchangeInfo = (exchangeInfoData) => {
   return {
     type: ActionTypes.GET_EXCHANGE_INFO,
-    payload: data
+    payload: {exchangeInfoData}
   }
 };
