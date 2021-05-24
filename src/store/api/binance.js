@@ -5,5 +5,11 @@ export const binanceAPI = {
     return binanceClient.get('/api/v3/exchangeInfo')
       .then(handleBinanceResponseSuccess)
       .catch(handleBinanceResponseError)
+  },
+
+  getKlines() {
+    return binanceClient.get('/api/v3/klines?symbol=DOGEBUSD&interval=1m&endTime=1621339063228&limit=1000')
+      .then(handleBinanceResponseSuccess)
+      .catch(handleBinanceResponseError)
   }
 };

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { BINANCE_URL }  from '../constants';
-import { setExchangeInfo } from '../action/binance';
 
 export const binanceClient = axios.create({
   baseURL: BINANCE_URL
