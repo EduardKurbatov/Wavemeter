@@ -1,20 +1,26 @@
 import './App.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setExchangeInfo, setKlines } from './store/action/binance';
+import { setExchangeInfo, getWaves, getPairsWithKlines } from './store/action/binance';
 
 function App() {
   const dispatch = useDispatch();
-  const [asset, setAsset] = useState(undefined)
+  const [asset, setAsset] = useState(undefined);
 
   useEffect(() => {
-    dispatch(setExchangeInfo())
+    dispatch(setExchangeInfo());
   }, [dispatch]);
+
+
+  const getPairsAndKlines = () => {
+    dispatch(getWaves(asset));
+    dispatch(getPairsWithKlines());
+  }
 
   return (
     <div className="app">
       <input placeholder="Enter the asset" className="asset-input" onChange={(e) => setAsset(e.target.value.toLocaleUpperCase())} />
-      <button className="get-klines-btn" onClick={() => {dispatch(setKlines(asset))}}>Get Klines</button>
+      <button disabled={!asset} className="get-pairs-klines-btn" onClick={getPairsAndKlines}>Get Pairs With Klines</button>
     </div>
   )
 };
