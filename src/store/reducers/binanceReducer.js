@@ -2,11 +2,11 @@ import { ActionTypes } from "../constants";
 
 export const binanceReducer = (state = {}, {type, payload}) => {
   switch (type) {
-    case ActionTypes.GET_EXCHANGE_INFO:
+    case ActionTypes.SET_EXCHANGE_INFO:
       return {...state, ...payload}
-    case ActionTypes.GET_KLINES:
+    case ActionTypes.SET_KLINES:
       return {...state, ...payload}
     default:
       return state
-  }
+  };
 };

@@ -12,7 +12,7 @@ export const setExchangeInfo = () => async (dispatch) => {
     }))
 
     dispatch({
-      type: ActionTypes.GET_EXCHANGE_INFO,
+      type: ActionTypes.SET_EXCHANGE_INFO,
       payload: {exchangeInfo}
     })
   };
@@ -22,13 +22,13 @@ export const setKlines = () => async (dispatch) => {
   const response = await binanceAPI.getKlines();
 
   if (!response.isError) {
-    const klines = response.data.map(item => {
+    response.data.map(item => {
       return item
     })
 
     dispatch({
-      type: ActionTypes.GET_KLINES,
-      payload: {klines}
+      type: ActionTypes.SET_KLINES,
+      payload: {klines: response.data}
     })
-  }
-}
+  };
+};
