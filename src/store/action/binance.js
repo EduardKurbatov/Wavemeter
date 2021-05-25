@@ -18,8 +18,8 @@ export const setExchangeInfo = () => async (dispatch) => {
   };
 };
 
-export const setKlines = (pair , interval = '1m') => async (dispatch) => {
-  const response = await binanceAPI.getKlines(pair, interval);
+export const setKlines = (pair , interval = '1m', limit) => async (dispatch) => {
+  const response = await binanceAPI.getKlines(pair, interval, limit);
 
   dispatch({
     type: ActionTypes.SET_KLINES,
