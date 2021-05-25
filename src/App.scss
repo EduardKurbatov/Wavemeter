@@ -4,4 +4,20 @@
 .app {
   min-height: 100vh;
   background: #282c34;
+  display: flex;
+  justify-content: center;
+  .asset-input {
+    margin-top: 20px;
+    width: 100px;
+    height: 20px;
+    outline: none;
+    border: none;
+  }
+  .get-klines-btn {
+    height: 20px;
+    margin: 20px 15px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
 }

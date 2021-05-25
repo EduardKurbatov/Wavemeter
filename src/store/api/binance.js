@@ -8,12 +8,11 @@ export const binanceAPI = {
   },
 
 
-  getKlines() {
+  getKlines(pair, interval = '1m', limit = 1000) {
     return binanceClient.get('/api/v3/klines', {params: {
-      symbol: 'DOGEBUSD',
-      interval: '1m',
-      endTime: 1621339063228,
-      limit: 1000
+      symbol: pair,
+      interval: interval,
+      limit: limit
     }})
       .then(handleBinanceResponseSuccess)
       .catch(handleBinanceResponseError)
