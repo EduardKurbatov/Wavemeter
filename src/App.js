@@ -1,7 +1,7 @@
 import './App.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setExchangeInfo, setKlines, getWaves } from './store/action/binance';
+import { setExchangeInfo, setKlines } from './store/action/binance';
 
 function App() {
   const dispatch = useDispatch();
