@@ -1,7 +1,7 @@
 import './App.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setExchangeInfo, getWaves, getPairsWithKlines } from './store/action/binance';
+import { setExchangeInfo, getKlines, getPairsWithKlines } from './store/action/binance';
 
 function App() {
   const dispatch = useDispatch();
@@ -13,8 +13,7 @@ function App() {
 
 
   const getPairsAndKlines = () => {
-    dispatch(getWaves(asset));
-    dispatch(getPairsWithKlines());
+    dispatch(getPairsWithKlines(asset));
   }
 
   return (

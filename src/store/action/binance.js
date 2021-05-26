@@ -18,23 +18,19 @@ export const setExchangeInfo = () => async (dispatch) => {
   };
 };
 
-export const getWaves = (asset) => async (dispatch, getState) => {
-  const pairs = getState().dataFromBinance.exchangeInfo.filter(pair => pair.baseAsset === asset);
 
-  dispatch({
-    type: ActionTypes.SET_PAIRS,
-    payload: {pairs: pairs}
-  })
-};
-
-export const getPairsWithKlines = (pair, interval = '1m', limit = 1000) => async (dispatch, getState) => {
-  const pairs = await Promise.all(getState().dataFromBinance.pairs.map(async (item) => ({
-    symbol: item.symbol,
-    klines: (await (binanceAPI.getKlines(item.symbol, interval, limit))).data
-  })))
+export const getPairsWithKlines = (asset, interval = '1m', limit = 1000) => async (dispatch, getState) => {
+  const pairsWithKlines = await Promise.all(getState().dataFromBinance.exchangeInfo
+    .filter(pair => pair.baseAsset === asset)
+      .map(async (pair) => {
+        return {
+          symbol: pair.symbol,
+          klines: (await binanceAPI.getKlines(pair.symbol, interval, limit)).data
+        }
+  }));
 
   dispatch({
     type: ActionTypes.SET_ALL_KLINES,
-    payload: {pairWithKlines : pairs}
+    payload: {pairsWithKlines}
   })
 };
