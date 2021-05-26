@@ -7,7 +7,6 @@ export const binanceAPI = {
       .catch(handleBinanceResponseError)
   },
 
-
   getKlines(pair, interval = '1m', limit = 1000) {
     return binanceClient.get('/api/v3/klines', {params: {
       symbol: pair,

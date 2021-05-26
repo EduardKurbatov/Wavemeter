@@ -8,16 +8,24 @@
   justify-content: center;
   .asset-input {
     margin-top: 20px;
+    background: rgb(190, 189, 189);
     width: 100px;
     height: 20px;
     outline: none;
     border: none;
   }
-  .get-pairs-klines-btn {
+  .pair-btn {
     height: 20px;
     margin: 20px 15px;
     outline: none;
     border: none;
     cursor: pointer;
+    color: #fff;
+  }
+  #get {
+    background: rgb(22, 68, 22);
+  }
+  #clear {
+    background: rgb(88, 11, 11);
   }
 }

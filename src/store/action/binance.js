@@ -18,19 +18,30 @@ export const setExchangeInfo = () => async (dispatch) => {
   };
 };
 
-
-export const getPairsWithKlines = (asset, interval = '1m', limit = 1000) => async (dispatch, getState) => {
-  const pairsWithKlines = await Promise.all(getState().dataFromBinance.exchangeInfo
-    .filter(pair => pair.baseAsset === asset)
-      .map(async (pair) => {
-        return {
-          symbol: pair.symbol,
-          klines: (await binanceAPI.getKlines(pair.symbol, interval, limit)).data
-        }
-  }));
+export const getKlines = (pair, interval, limit) => async (dispatch) => {
+  const response = await binanceAPI.getKlines(pair, interval, limit);
 
   dispatch({
     type: ActionTypes.SET_ALL_KLINES,
-    payload: {pairsWithKlines}
+    payload: {
+      symbol: pair,
+      data: response.data
+    }
+  })
+}
+
+export const getPairsWithKlines = (asset, interval = '1m', limit = 1000) => async (dispatch, getState) => {
+  getState().dataFromBinance.exchangeInfo
+    .filter(pair => pair.baseAsset === asset)
+      .map((pair) => {
+        return dispatch(getKlines(pair.symbol, interval, limit))
+    }
+  );
+};
+
+export const clearPairsAndKlines = () => async (dispatch) => {
+  dispatch({
+    type: ActionTypes.CLEAR_ALL_KLINES,
+    payload: []
   })
 };
