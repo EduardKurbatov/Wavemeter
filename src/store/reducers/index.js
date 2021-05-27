@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { binanceReducer } from './exchangeDataInfoReducer';
+import { binanceReducer } from './binanceReducer';
 
 const reducers = combineReducers({
-  dataFromBinance: binanceReducer
+  dataFromBinance: binanceReducer, 
 });
 
 export default reducers;
