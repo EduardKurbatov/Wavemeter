@@ -22,7 +22,7 @@ export const getKlines = (pair, interval, limit) => async (dispatch) => {
   const response = await binanceAPI.getKlines(pair, interval, limit);
 
   dispatch({
-    type: ActionTypes.SET_ALL_KLINES,
+    type: ActionTypes.SET_KLINES,
     payload: {
       symbol: pair,
       data: response.data
@@ -41,7 +41,7 @@ export const getPairsWithKlines = (asset, interval = '1m', limit = 1000) => asyn
 
 export const clearPairsAndKlines = () => async (dispatch) => {
   dispatch({
-    type: ActionTypes.CLEAR_ALL_KLINES,
+    type: ActionTypes.CLEAR_KLINES,
     payload: []
   })
 };

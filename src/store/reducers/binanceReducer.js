@@ -9,9 +9,9 @@ export const binanceReducer = (state = initiallState, {type, payload}) => {
   switch (type) {
     case ActionTypes.SET_EXCHANGE_INFO:
       return {...state, ...payload};
-    case ActionTypes.SET_ALL_KLINES:
+    case ActionTypes.SET_KLINES:
       return {...state, klines: [...state.klines, payload]};
-    case ActionTypes.CLEAR_ALL_KLINES:
+    case ActionTypes.CLEAR_KLINES:
       return {...state, klines: payload};
     default:
       return state;

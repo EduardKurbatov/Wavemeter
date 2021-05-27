@@ -20,7 +20,7 @@ function App() {
     <div className="app">
       <button disabled={!asset} className="pair-btn" id="get" onClick={getPairsAndKlines}>Get Pairs</button>
       <input placeholder="Enter the asset" className="asset-input" onChange={(e) => setAsset(e.target.value.toLocaleUpperCase())} />
-      <button disabled={!asset} className="pair-btn" id="clear" onClick={() => {dispatch(clearPairsAndKlines())}}>Сlear Pairs</button>
+      <button className="pair-btn" id="clear" onClick={() => dispatch(clearPairsAndKlines())}>Сlear Pairs</button>
     </div>
   )
 };
