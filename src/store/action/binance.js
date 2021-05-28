@@ -20,9 +20,7 @@ export const setExchangeInfo = () => async (dispatch) => {
 
 export const getKlines = (pair, interval, limit) => async (dispatch) => {
   const response = await binanceAPI.getKlines(pair, interval, limit);
-  const averageArr = response.data.map(item => {
-    return (1 - parseFloat(item[3]) / parseFloat(item[2]))
-  });
+  const averageArr = response.data.map(item => (1 - parseFloat(item[3]) / parseFloat(item[2])));
   const average = averageArr.reduce((a, b) => a + b, 0) / response.data.length
 
   dispatch({
