@@ -2,7 +2,7 @@ import { ActionTypes } from "../constants";
 
 const initiallState = {
   exchangeInfo: [],
-  klines: []
+  klines: [],
 }
 
 export const binanceReducer = (state = initiallState, {type, payload}) => {
