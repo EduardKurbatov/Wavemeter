@@ -1,8 +1,14 @@
 import DataTable from 'react-data-table-component';
+import { useState } from 'react';
 import './Table.scss';
 
 
 function Table({pairs}) {
+ const [color, setColor] = useState('')
+
+  const chooseColor = (item) => {
+
+  }
 
   const columns = [
     {
@@ -21,7 +27,10 @@ function Table({pairs}) {
       name: 'Change %',
       selector: 'change',
       sortable: true,
-      cell: pairs => <div style={{color: pairs.change > 0 ? 'green' : 'red'}}>{pairs.change}</div>,
+      cell: pairs =>
+        <div style={{color: pairs.change > 0 ? 'green' : pairs.change < 0 ? 'red' : 'grey'}}>
+          {pairs.change}
+        </div>,
     }
   ];
 
