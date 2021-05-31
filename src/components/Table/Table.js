@@ -1,7 +1,9 @@
-import DataTable from 'react-data-table-component';
 import './Table.scss';
+import { useSelector } from 'react-redux';
+import DataTable from 'react-data-table-component';
 
-function Table({pairs}) {
+function Table() {
+  const pairs = useSelector(state => state.dataFromBinance.klines);
 
   const columns = [
     {
@@ -28,11 +30,11 @@ function Table({pairs}) {
   ];
 
   return (
-      <DataTable className="table"
-        data={pairs} 
-        columns={columns}
-        theme="dark"
-      />
+    <DataTable className="table"
+      data={pairs} 
+      columns={columns}
+      theme="dark"
+    />
   )
 }
 
