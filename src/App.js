@@ -16,8 +16,6 @@ function App() {
     dispatch(setExchangeInfo());
   }, [dispatch]);
 
-
-
   const getPairsAndKlines =  async () => {
     setLoading(true)
     await dispatch(clearPairsAndKlines());
