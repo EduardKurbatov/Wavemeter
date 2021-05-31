@@ -23,9 +23,9 @@
       border: none;
       cursor: pointer;
       color: #fff;
-    }
-    .pair-btn:hover {
-      opacity: .8;
+      &:hover {
+        opacity: .8;
+      }
     }
     #get {
       background: rgb(22, 68, 22);
