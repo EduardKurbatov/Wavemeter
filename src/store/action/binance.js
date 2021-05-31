@@ -21,25 +21,27 @@ export const setExchangeInfo = () => async (dispatch) => {
 export const getKlines = (pair, interval, limit) => async (dispatch) => {
   const response = await binanceAPI.getKlines(pair, interval, limit);
   const averageArr = response.data.map(item => (1 - parseFloat(item[3]) / parseFloat(item[2])));
-  const average = averageArr.reduce((a, b) => a + b, 0) / response.data.length
+  const average = averageArr.reduce((a, b) => a + b, 0) / response.data.length;
+  const change = ((response.data[response.data.length - 1][4] - response.data[0][1]) / response.data[0][1]) * 100
 
   dispatch({
     type: ActionTypes.SET_KLINES,
     payload: {
       symbol: pair,
       data: response.data,
-      average: average
+      average: average,
+      change: change
     }
   })
 };
 
-export const getPairsWithKlines = (asset, interval = '1m', limit = 1000) => async (dispatch, getState) => {
-  getState().dataFromBinance.exchangeInfo
+export const getPairsWithKlines = (asset, interval = '5m', limit = 288) => async (dispatch, getState) => {
+  return Promise.all(getState().dataFromBinance.exchangeInfo
     .filter(pair => pair.baseAsset === asset)
-      .map((pair) => {
-        return dispatch(getKlines(pair.symbol, interval, limit))
+      .map(async (pair) => {
+        return await dispatch(getKlines(pair.symbol, interval, limit))
     }
-  );
+  ))
 };
 
 export const clearPairsAndKlines = () => async (dispatch) => {
