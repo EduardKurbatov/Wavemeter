@@ -1,7 +1,6 @@
 import DataTable from 'react-data-table-component';
 import './Table.scss';
 
-
 function Table({pairs}) {
 
   const columns = [
