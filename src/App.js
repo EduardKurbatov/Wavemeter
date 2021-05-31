@@ -29,7 +29,7 @@ function App() {
     <div className="app">
       <div className="tool-container">
         <input placeholder="Enter the asset" className="asset-input" onChange={(e) => setAsset(e.target.value.toLocaleUpperCase())} />
-        <button disabled={!asset} className="pair-btn" id="get" onClick={getPairsAndKlines}>Get Pairs</button>
+        <button disabled={!asset} className="pair-btn" onClick={getPairsAndKlines}>Get Pairs</button>
       </div>
       {!loading ? <Table pairs={pairs} /> : <img className="loader" src={loader}></img>}
     </div>

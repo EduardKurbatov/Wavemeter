@@ -23,15 +23,10 @@
       border: none;
       cursor: pointer;
       color: #fff;
+      background: rgb(22, 68, 22);
       &:hover {
         opacity: .8;
       }
-    }
-    #get {
-      background: rgb(22, 68, 22);
-    }
-    #clear {
-      background: rgb(88, 11, 11);
     }
   }
   .loader {
