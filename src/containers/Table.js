@@ -1,5 +1,5 @@
 import './Table.scss';
-import { connect, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import DataTable from 'react-data-table-component';
 
 export default function Table() {
@@ -37,4 +37,3 @@ export default function Table() {
     />
   )
 };
-  
