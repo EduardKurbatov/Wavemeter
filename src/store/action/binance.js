@@ -22,7 +22,7 @@ export const getKlines = (pair, interval, limit) => async (dispatch) => {
   const response = await binanceAPI.getKlines(pair, interval, limit);
   if (!response.isError) {
     const firsElement = response.data[0][1];
-    const lastelement = response.data[response.data.length - 1][4] ? response.data[response.data.length - 1][4] : null;
+    const lastelement = response.data[response.data.length - 1][4];
     const change = ((lastelement - firsElement) / firsElement) * 100;
     const average = response.data.reduce((acc, curr) => acc + (1 - parseFloat(curr[3]) / parseFloat(curr[2])), 0) / response.data.length;
 
