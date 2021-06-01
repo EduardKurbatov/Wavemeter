@@ -2,7 +2,7 @@ import './App.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setExchangeInfo, getPairsWithKlines, clearPairsAndKlines } from './store/action/binance';
-import Table from './components/Table/Table';
+import Table from './containers/Table';
 import loader from '../src/assets/loading.gif';
 
 function App() {

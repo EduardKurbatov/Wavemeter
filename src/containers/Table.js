@@ -1,8 +1,8 @@
 import './Table.scss';
-import { useSelector } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import DataTable from 'react-data-table-component';
 
-function Table() {
+export default function Table() {
   const pairs = useSelector(state => state.dataFromBinance.klines);
 
   const columns = [
@@ -28,7 +28,7 @@ function Table() {
         </div>,
     }
   ];
-
+  
   return (
     <DataTable className="table"
       data={pairs} 
@@ -36,6 +36,5 @@ function Table() {
       theme="dark"
     />
   )
-}
-
-export default Table;
+};
+  
