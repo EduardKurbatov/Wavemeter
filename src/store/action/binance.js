@@ -20,26 +20,31 @@ export const setExchangeInfo = () => async (dispatch) => {
 
 export const getKlines = (pair, interval, limit) => async (dispatch) => {
   const response = await binanceAPI.getKlines(pair, interval, limit);
-  const averageArr = response.data.map(item => (1 - parseFloat(item[3]) / parseFloat(item[2])));
-  const average = averageArr.reduce((a, b) => a + b, 0) / response.data.length
+  if (!response.isError) {
+    const firsElement = response.data[0][1];
+    const lastelement = response.data[response.data.length - 1][4];
+    const change = ((lastelement - firsElement) / firsElement) * 100;
+    const average = response.data.reduce((acc, curr) => acc + (1 - parseFloat(curr[3]) / parseFloat(curr[2])), 0) / response.data.length;
 
-  dispatch({
-    type: ActionTypes.SET_KLINES,
-    payload: {
-      symbol: pair,
-      data: response.data,
-      average: average
-    }
-  })
+    dispatch({
+      type: ActionTypes.SET_KLINES,
+      payload: {
+        symbol: pair,
+        dsta: response.data,
+        average,
+        change
+      }
+    })
+  }
 };
 
 export const getPairsWithKlines = (asset, interval = '1m', limit = 1000) => async (dispatch, getState) => {
-  getState().dataFromBinance.exchangeInfo
-    .filter(pair => pair.baseAsset === asset)
-      .map((pair) => {
-        return dispatch(getKlines(pair.symbol, interval, limit))
+  return Promise.all(getState().dataFromBinance.exchangeInfo
+    .filter(pair => [pair.quoteAsset, pair.baseAsset].includes(asset))
+      .map(async (pair) => {
+        return await dispatch(getKlines(pair.symbol, interval, limit))
     }
-  );
+  ))
 };
 
 export const clearPairsAndKlines = () => async (dispatch) => {
