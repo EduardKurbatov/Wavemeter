@@ -29,6 +29,9 @@ function App() {
         <input placeholder="Enter the asset" className="asset-input" onChange={(e) => setAsset(e.target.value.toLocaleUpperCase())} />
         <button disabled={!asset} className="pair-btn" onClick={getPairsAndKlines}>Get Pairs</button>
       </div>
+      <div className="pairs-header">
+        <span>There Are : {pairs.length} Pairs</span>
+      </div>
       {!loading ? <Table /> : <img className="loader" src={loader}></img>}
     </div>
   )
