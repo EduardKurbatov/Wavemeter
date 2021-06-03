@@ -24,17 +24,18 @@ export const getKlines = (pair, interval, limit) => async (dispatch) => {
     const firsElement = response.data[0][1];
     const lastelement = response.data[response.data.length - 1][4];
     const change = ((lastelement - firsElement) / firsElement) * 100;
-    const average = response.data.reduce((acc, curr) => acc + (1 - parseFloat(curr[3]) / parseFloat(curr[2])), 0) / response.data.length;
+    const average = response.data.reduce((acc, curr) => acc + (1 - parseFloat(curr[3]) / parseFloat(curr[2])), 0) / response.data.length * 100;
 
     dispatch({
       type: ActionTypes.SET_KLINES,
       payload: {
         symbol: pair,
         dsta: response.data,
-        average,
-        change
+        average: average.toFixed(5),
+        change: change.toFixed(2)
       }
     })
+    console.log(response.header['x-mbx-used-weight-1m']);
   }
 };
 

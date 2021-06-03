@@ -7,6 +7,7 @@ export const binanceClient = axios.create({
 
 export const handleBinanceResponseSuccess = (response) => {
   return {
+    header: response.headers,
     data: response.data,
     isError: false
   }
@@ -14,6 +15,7 @@ export const handleBinanceResponseSuccess = (response) => {
 
 export const handleBinanceResponseError = (error) => {
   return {
+      header: error.response?.headers,
       data: error.response?.data,
       isError: true
   }
