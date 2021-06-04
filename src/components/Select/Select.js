@@ -6,8 +6,8 @@ function Select({interval, setInterval}) {
   return (
     <div className="select-interval">
       <select className="select-box" value={interval} onChange={(e) => setInterval(e.target.value)}>
-        {INTERVALS.map((interval) => {
-          return <option>{interval}</option>
+        {INTERVALS.map((interval, index) => {
+          return <option key={index}>{interval}</option>
         })}
       </select>
     </div>

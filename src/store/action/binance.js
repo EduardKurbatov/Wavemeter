@@ -1,14 +1,14 @@
-import { ActionTypes } from '../constants';
+import { ActionTypes, BINANCE_PAIR_ACTIVE_STATUSES } from '../constants';
 import { binanceAPI } from '../api/binance';
 
 export const setExchangeInfo = () => async (dispatch) => {
   const response = await binanceAPI.getExchangeInfo();
 
   if (!response.isError) {
-    const exchangeInfo = response.data.symbols.map(item => ({
+    const exchangeInfo = response.data.symbols.filter(item => BINANCE_PAIR_ACTIVE_STATUSES.includes(item.status)).map(item => ({
       baseAsset: item.baseAsset,
       quoteAsset: item.quoteAsset,
-      symbol: item.symbol
+      symbol: item.symbol,
     }))
 
     dispatch({

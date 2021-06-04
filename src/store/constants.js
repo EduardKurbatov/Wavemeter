@@ -7,3 +7,5 @@ export const ActionTypes = {
 };
 
 export const INTERVALS = ['1m', '3m', '5m', '15m', '30m', '1h'];
+
+export const BINANCE_PAIR_ACTIVE_STATUSES = ['TRADING'];

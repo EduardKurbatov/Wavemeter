@@ -38,7 +38,7 @@ function App() {
         <button disabled={!asset} className="pair-btn" onClick={getPairsAndKlines}>Get Pairs</button>
       </div>
       <div className="pairs-header"><span>There Are : {pairs.length} Pairs</span></div>
-      {!loading ? <Table /> : <img className="loader" src={loader}></img>}
+      {!loading ? <Table /> : <img className="loader" src={loader} alt="loader"></img>}
     </div>
   )
 };
