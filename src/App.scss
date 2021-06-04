@@ -10,16 +10,16 @@
     .asset-input {
       margin-top: 20px;
       background: rgb(241, 239, 239);
-      width: 100px;
       height: 20px;
       outline: none;
       border: none;
       border-radius: 4px;
+      margin-right: 25px;
     }
     .pair-btn {
       height: 25px;
       border-radius: 5px;
-      margin: 20px 15px;
+      margin-top: 20px;
       outline: none;
       border: none;
       cursor: pointer;
@@ -29,10 +29,27 @@
         opacity: .8;
       }
     }
+    .limit-container {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      margin-right: 20px;
+      .limit-input {
+        border: none;
+        outline: none;
+        background: #0052cc;
+      }
+      .limit {
+        font-size: 18px;
+        color: white;
+        margin-left: 10px;
+      }
+    }
   }
   .pairs-header  {
     text-align: center;
     color: #fff;
+    margin-top: 100px;
   }
   .loader {
     display: block;

@@ -1,0 +1,13 @@
+.select-interval {
+  margin-top: 20px;
+  height: 20px;
+  margin-right: 25px;
+  border-radius: 4px;
+  .select-box {
+    height: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+}
