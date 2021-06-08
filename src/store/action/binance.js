@@ -35,7 +35,7 @@ export const getKlines = (pair, interval, limit) => async (dispatch) => {
         change: change.toFixed(2)
       }
     })
-  }
+  };
 };
 
 export const getPairsWithKlines = (asset, interval, limit) => async (dispatch, getState) => {
