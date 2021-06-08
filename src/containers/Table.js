@@ -8,19 +8,19 @@ export default function Table() {
   const columns = [
     {
       name: 'Pair',
-      selector: 'pair',
+      selector: pairs => pairs.symbol,
       sortable: true,
       cell: pairs => <div>{pairs.symbol}</div>,
     },
     {
       name: 'Average',
-      selector: 'average',
+      selector: pairs => Number(pairs.average),
       sortable: true,
       cell: pairs => <div>{pairs.average}</div>,
     },
     {
       name: 'Change %',
-      selector: 'change',
+      selector: pairs => Number(pairs.change),
       sortable: true,
       cell: pairs =>
         <div style={{color: pairs.change > 0 ? 'green' : pairs.change < 0 ? 'red' : 'grey'}}>
