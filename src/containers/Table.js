@@ -26,6 +26,13 @@ export default function Table() {
         <div style={{color: pairs.change > 0 ? 'green' : pairs.change < 0 ? 'red' : 'grey'}}>
           {pairs.change}
         </div>,
+    },
+    {
+      name: 'Life Time',
+      selector: pairs => Number(pairs.lifeTime),
+      sortable: true,
+      cell: pairs => 
+        <div>{pairs.lifeTime}</div>
     }
   ];
 

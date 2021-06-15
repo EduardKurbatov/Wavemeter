@@ -11,7 +11,7 @@ export const binanceAPI = {
     return binanceClient.get('/api/v3/klines', {params: {
       symbol: pair,
       interval: interval,
-      limit: limit
+      limit: limit,
     }})
       .then(handleBinanceResponseSuccess)
       .catch(handleBinanceResponseError)

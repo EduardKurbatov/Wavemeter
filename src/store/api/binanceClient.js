@@ -2,7 +2,7 @@ import axios from 'axios';
 import { BINANCE_URL }  from '../constants';
 
 export const binanceClient = axios.create({
-  baseURL: BINANCE_URL
+  baseURL: BINANCE_URL,
 });
 
 export const handleBinanceResponseSuccess = (response) => {
