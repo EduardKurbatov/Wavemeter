@@ -26,7 +26,7 @@ export const getKlines = (pair, interval, limit) => async (dispatch) => {
     const lastElement = response.data[response.data.length - 1][1];
     const change = ((lastElement - firsElement) / firsElement) * 100;
     const average = response.data.reduce((acc, curr) => acc + (1 - parseFloat(curr[3]) / parseFloat(curr[2])), 0) / response.data.length * 100;
-    
+
       dispatch({
         type: ActionTypes.SET_KLINES,
         payload: {

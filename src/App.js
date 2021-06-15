@@ -1,7 +1,7 @@
 import './App.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setExchangeInfo, getPairsWithKlines, clearPairsAndKlines, getKlines} from './store/action/binance';
+import { setExchangeInfo, getPairsWithKlines, clearPairsAndKlines} from './store/action/binance';
 import Table from './containers/Table';
 import loader from '../src/assets/loading.gif';
 import Select from './components/Select/Select';
@@ -14,7 +14,6 @@ function App() {
   const [limit, setLimit] = useState(1000);
   const [loading, setLoading] = useState(false);
   const pairs = useSelector(state => state.dataFromBinance.klines);
-  const exchangeInfo = useSelector(state => state.dataFromBinance.exchangeInfo);
 
   useEffect(() => {
     dispatch(setExchangeInfo());
@@ -36,7 +35,7 @@ function App() {
           <input type="range" min="10" max="1000" step="1" value={limit} className="limit-input" onChange={(e) => setLimit(e.target.value)} />
           <span className="limit">{limit}</span>
         </div>
-        <button disabled={!asset} className="pair-btn" onClick={getPairsAndKlines}>Get Pairs</button>
+        <button disabled={loading} className="pair-btn" onClick={getPairsAndKlines}>Get Pairs</button>
       </div>
       <div className="pairs-header"><span>There Are : {pairs.length} Pairs</span></div>
       {!loading ? <Table /> : <img className="loader" src={loader} alt="loader"></img>}
