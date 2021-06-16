@@ -43,9 +43,7 @@ export const getKlines = (pair, interval, limit) => async (dispatch) => {
 export const getPairsWithKlines = (asset, interval, limit) => async (dispatch, getState) => {
   return Promise.all(getState().dataFromBinance.exchangeInfo
     .filter(pair => [pair.quoteAsset, pair.baseAsset].includes(asset))
-      .map(async (pair) => {
-        await (dispatch(getKlines(pair.symbol, interval, limit)))
-    }
+        .map(async (pair) => await dispatch(getKlines(pair.symbol, interval, limit))
   ))
 };
 
