@@ -34,7 +34,7 @@ export const getKlines = (pair, interval, limit) => async (dispatch) => {
           data: response.data,
           average: average.toFixed(5),
           change: change.toFixed(2),
-          lifeTime: lifeTime
+          lifeTime: lifeTime >= 1000 ? `${lifeTime}+` : lifeTime
         }
       })
   }

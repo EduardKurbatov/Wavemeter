@@ -32,7 +32,7 @@ function App() {
         <input placeholder="Enter the asset" className="asset-input" onChange={(e) => setAsset(e.target.value.toLocaleUpperCase())} />
         <Select interval={interval} setInterval={setInterval}/>
         <div className="limit-container">
-          <input type="range" min="10" max="1000" step="1" value={limit} className="limit-input" onChange={(e) => setLimit(e.target.value)} />
+          <input type="range" min="10" max="1000" step="10" value={limit} className="limit-input" onChange={(e) => setLimit(e.target.value)} />
           <span className="limit">{limit}</span>
         </div>
         <button disabled={loading} className="pair-btn" onClick={getPairsAndKlines}>Get Pairs</button>

@@ -28,7 +28,7 @@ export default function Table() {
         </div>,
     },
     {
-      name: 'Life Time',
+      name: 'Life Time (d)',
       selector: pairs => Number(pairs.lifeTime),
       sortable: true,
       cell: pairs => 
